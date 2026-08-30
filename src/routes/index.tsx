@@ -258,8 +258,8 @@ function Portfolio() {
             {/* PORTRAIT */}
             <Reveal delay={0.1} className="order-first lg:order-none">
               <div className="relative mx-auto w-full max-w-[380px] aspect-square">
-                <div className="absolute inset-0 rounded-full bg-terra" />
-                <div className="absolute inset-x-6 bottom-0 top-4 overflow-hidden rounded-b-full">
+                <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-full bg-terra" />
+                <div className="absolute inset-0 overflow-hidden rounded-full ring-1 ring-line">
                   <img
                     src={portrait.url}
                     alt="Portrait of Justine Laurence G. Coniendo"
