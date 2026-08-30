@@ -382,7 +382,7 @@ function Portfolio() {
                       className="uppercase fill-current"
                     >
                       <textPath href="#stampCircle" startOffset="0%">
-                        Open for new projects • Open for new projects •
+                        • Open for new projects •
                       </textPath>
                     </text>
                   </svg>
