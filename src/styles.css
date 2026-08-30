@@ -55,16 +55,17 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Playful pastel portfolio palette */
+  /* Editorial terracotta portfolio palette */
   --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-soft: var(--soft);
-  --color-berry: var(--berry);
-  --color-coral: var(--coral);
-  --color-bubble: var(--bubble);
-  --color-butter: var(--butter);
+  --color-terra: var(--terra);
+  --color-terra-soft: var(--terra-soft);
+  --color-surface: var(--surface);
+  --color-contrast: var(--contrast);
+  --color-contrast-fg: var(--contrast-fg);
   --color-line: var(--line);
-  --font-display: "Fredoka", sans-serif;
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
   --font-body: "Inter", sans-serif;
 }
 
