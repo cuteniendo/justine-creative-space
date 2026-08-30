@@ -4,6 +4,12 @@ import { Reveal } from "@/components/reveal";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SocialLinks } from "@/components/social-links";
 import portrait from "@/assets/portrait.jpg.asset.json";
+import brandAgsGarden from "@/assets/works/brand-ags-garden.jpg";
+import brandIteaLogo from "@/assets/works/brand-itea-logo.jpg";
+import webDashboard from "@/assets/works/web-dashboard.png";
+import webInfographic from "@/assets/works/web-infographic.png";
+import editorialPressFreedom from "@/assets/works/editorial-press-freedom.jpg";
+import socialFisheriesCover from "@/assets/works/social-fisheries-cover.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -108,43 +114,79 @@ const CERTIFICATIONS = [
   },
 ];
 
-const WORKS = [
-  { title: "Brand identity", note: "Placeholder project — add details later." },
-  { title: "Web build", note: "Placeholder project — add details later." },
-  { title: "Editorial layout", note: "Placeholder project — add details later." },
-  { title: "Social campaign", note: "Placeholder project — add details later." },
+const WORKS: {
+  title: string;
+  note: string;
+  images: { src: string; alt: string; pos?: "top" | "center" }[];
+}[] = [
+  {
+    title: "Brand identity",
+    note: "AG's Garden social ad & iTEA org logo — brand and print design.",
+    images: [
+      { src: brandAgsGarden, alt: "AG's Garden social media promotional graphic" },
+      { src: brandIteaLogo, alt: "iTEA (Esteemed Alliance of IT Students) organization logo" },
+    ],
+  },
+  {
+    title: "Web build",
+    note: "SONARCO loan & e-commerce platform — dashboard build and research poster.",
+    images: [
+      { src: webDashboard, alt: "SONARCO e-commerce platform product dashboard screenshot" },
+      { src: webInfographic, alt: "SONARCO capstone research poster" },
+    ],
+  },
+  {
+    title: "Editorial layout",
+    note: "World Press Freedom Day — The Aquarian editorial graphic.",
+    images: [
+      { src: editorialPressFreedom, alt: "World Press Freedom Day editorial poster", pos: "top" },
+    ],
+  },
+  {
+    title: "Social campaign",
+    note: "Fisheries Extension book cover design.",
+    images: [
+      { src: socialFisheriesCover, alt: "Fisheries Extension book cover design", pos: "top" },
+    ],
+  },
 ];
 
 const TESTIMONIALS = [
   {
-    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    quote:
+      "Justine was one of those students who didn't just meet requirements — he pushed to understand the \u2018why\u2019 behind every system he built. That mindset showed in his output, and it's no surprise he graduated Cum Laude.",
     name: "Gerle Mae Alabado, MIT",
     role: "College Professor, Carlos Hilado Memorial State University",
   },
   {
-    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    quote:
+      "During his internship, Justine picked up our web workflow fast and needed very little hand-holding. He'd come back with layouts that were already client-ready, not just drafts.",
     name: "Joken E. Villanueva, MIT",
-    role: "OJT Supervisor, Carlos Hilado Memorial State University",
+    role: "OJT Supervisor, PIES Information Technology Solutions",
   },
   {
-    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    quote:
+      "I advised Justine's team on SONARCO, their loan application and e-commerce platform for an agrarian reform cooperative. He handled the technical build with real care for the end users \u2014 smallholder farmers who needed something genuinely usable, not just functional.",
     name: "Gaily Rey April M. Guzon, PhDTM",
     role: "Capstone Adviser, Carlos Hilado Memorial State University",
   },
   {
-    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    quote:
+      "Justine keeps our SEO reporting for the HeiPro Digital account tight and on schedule. He flags ranking shifts before I even have to ask, which makes client updates a lot less stressful on my end.",
     name: "Angelica Olaciman",
-    role: "Account Manager, ML Digital Marketing Agency (HeiPro Digital account)",
+    role: "Account Manager, ML Digital Marketing Agency",
   },
   {
-    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    quote:
+      "He built out automation in GoHighLevel that cut a lot of manual reporting work for the Next Level Wealth account. Practical, not over-engineered \u2014 exactly what we needed.",
     name: "Mark Bernard Santa Ana",
-    role: "GHL Account Manager, ML Digital Marketing Agency (Next Level Wealth account)",
+    role: "GHL Account Manager, ML Digital Marketing Agency",
   },
   {
-    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    quote:
+      "Justine's on-page audits for the Prioritized SEO account are thorough without being bloated. He explains findings clearly enough that I can hand them straight to the client.",
     name: "Jineveve Sumingcan",
-    role: "Team Leader, ML Digital Marketing Agency (Prioritized SEO account)",
+    role: "Team Leader, ML Digital Marketing Agency",
   },
 ];
 
@@ -382,7 +424,7 @@ function Portfolio() {
                       className="uppercase fill-current"
                     >
                       <textPath href="#stampCircle" startOffset="0%">
-                        • Open for new projects •
+                        Open for new projects •
                       </textPath>
                     </text>
                   </svg>
@@ -427,7 +469,10 @@ function Portfolio() {
           <div className="border-t border-line">
             {SERVICES.map((s, i) => (
               <Reveal key={s.title} delay={i * 0.04}>
-                <div className="group border-b border-line py-6 flex items-center justify-between gap-4 transition-colors duration-200 hover:bg-surface/70">
+                <a
+                  href="#contact"
+                  className="group border-b border-line py-6 flex items-center justify-between gap-4 transition-colors duration-200 hover:bg-surface/70"
+                >
                   <div>
                     <span className="font-display font-semibold uppercase text-xl transition-colors group-hover:text-terra">
                       {s.title}
@@ -437,7 +482,7 @@ function Portfolio() {
                   <span className="text-soft group-hover:text-terra group-hover:translate-x-1 transition-all duration-200 text-2xl">
                     &rarr;
                   </span>
-                </div>
+                </a>
               </Reveal>
             ))}
           </div>
@@ -526,10 +571,16 @@ function Portfolio() {
             {WORKS.map((w, i) => (
               <Reveal key={w.title} delay={i * 0.05}>
                 <div className="group bg-surface rounded-2xl p-4 h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-ink/10">
-                  <div className="w-full aspect-[3/2] rounded-xl grid place-items-center bg-terra-soft outline-1 -outline-offset-1 outline-line">
-                    <span className="text-[10px] font-medium uppercase tracking-[0.15em] text-soft">
-                      Image
-                    </span>
+                  <div className="w-full aspect-[3/2] rounded-xl overflow-hidden outline-1 -outline-offset-1 outline-line flex gap-0.5 bg-terra-soft">
+                    {w.images.map((img) => (
+                      <img
+                        key={img.src}
+                        src={img.src}
+                        alt={img.alt}
+                        loading="lazy"
+                        className={`h-full flex-1 object-cover ${img.pos === "top" ? "object-top" : "object-center"}`}
+                      />
+                    ))}
                   </div>
                   <div className="px-2 pt-4 pb-2">
                     <span className="font-display font-semibold uppercase transition-colors group-hover:text-terra">
