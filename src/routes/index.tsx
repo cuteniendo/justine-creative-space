@@ -2,18 +2,19 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Reveal } from "@/components/reveal";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { SocialLinks } from "@/components/social-links";
 import portrait from "@/assets/portrait.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Justine Coniendo — Web Developer & Graphic Designer" },
+      { title: "Justine Coniendo — SEO & AI Automation Specialist" },
       {
         name: "description",
         content:
           "Portfolio of Justine Laurence G. Coniendo — a Cum Laude B.S. IT graduate, web developer and graphic designer based in Himamaylan City, Negros Occidental, Philippines. Skills in web development, graphic design, SEO and AI automation.",
       },
-      { property: "og:title", content: "Justine Coniendo — Web Developer & Graphic Designer" },
+      { property: "og:title", content: "Justine Coniendo — SEO & AI Automation Specialist" },
       {
         property: "og:description",
         content:
@@ -36,11 +37,11 @@ const NAV_LINKS = [
 ];
 
 const SKILLS = [
+  { name: "SEO & Keyword Research", note: "Rank & refine" },
+  { name: "AI Automation & Workflows", note: "Smarter workflows" },
   { name: "Web Development", note: "Front to back end" },
   { name: "Layout & Graphic Design", note: "Brand to print" },
   { name: "Database Management", note: "Clean, indexed data" },
-  { name: "SEO & Keyword Research", note: "Rank & refine" },
-  { name: "AI Automation & Workflows", note: "Smarter workflows" },
   { name: "Analytics & Reporting", note: "Data that drives" },
   { name: "Communication", note: "Clear, collaborative" },
   { name: "Leadership & Collaboration", note: "Team & editorial" },
@@ -66,7 +67,7 @@ const EXPERIENCE = [
     period: "Aug 2026 — Present",
     role: "SEO Specialist & AI Automation Specialist",
     org: "ML Digital Marketing Agency",
-    desc: "Conducted keyword research, on-page SEO audits, and content optimization; tracked performance using Google Analytics and SE Ranking; performed competitor and backlink analysis using Semrush; optimized Google Business Profile listings; built AI-assisted workflows to automate SEO reporting and content QA.",
+    desc: "Conducted keyword research, on-page SEO audits, and content optimization across client accounts including HeiPro Digital, Prioritized SEO, and Next Level Wealth; tracked performance using Google Analytics and SE Ranking; performed competitor and backlink analysis using Semrush; optimized Google Business Profile listings; built AI-assisted workflows to automate SEO reporting and content QA.",
   },
   {
     period: "Feb — Jun 2026",
@@ -88,6 +89,25 @@ const EXPERIENCE = [
   },
 ];
 
+const EDUCATION = [
+  {
+    degree: "Bachelor of Science in Information Technology",
+    org: "Carlos Hilado Memorial State University",
+    period: "2022 — 2026",
+    note: "Cum Laude",
+  },
+];
+
+const CERTIFICATIONS = [
+  { name: "SEO Specialist Training", org: "ML Digital Marketing Agency", period: "July 2026" },
+  { name: "The Aquarian Workshop", org: "CHMSU Talisay", period: "September 2024" },
+  {
+    name: "Leadership Training",
+    org: "Esteemed Alliance of Information Technology Students, CHMSU",
+    period: "April 2026",
+  },
+];
+
 const WORKS = [
   { title: "Brand identity", note: "Placeholder project — add details later." },
   { title: "Web build", note: "Placeholder project — add details later." },
@@ -96,13 +116,47 @@ const WORKS = [
 ];
 
 const TESTIMONIALS = [
-  { quote: "Placeholder testimonial — a short client quote about the work goes here.", name: "Client name", role: "Role, Company" },
-  { quote: "Placeholder testimonial — a short client quote about the work goes here.", name: "Client name", role: "Role, Company" },
-  { quote: "Placeholder testimonial — a short client quote about the work goes here.", name: "Client name", role: "Role, Company" },
+  {
+    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    name: "Gerle Mae Alabado, MIT",
+    role: "College Professor, Carlos Hilado Memorial State University",
+  },
+  {
+    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    name: "Joken E. Villanueva, MIT",
+    role: "OJT Supervisor, Carlos Hilado Memorial State University",
+  },
+  {
+    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    name: "Gaily Rey April M. Guzon, PhDTM",
+    role: "Capstone Adviser, Carlos Hilado Memorial State University",
+  },
+  {
+    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    name: "Angelica Olaciman",
+    role: "Account Manager, ML Digital Marketing Agency (HeiPro Digital account)",
+  },
+  {
+    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    name: "Mark Bernard Santa Ana",
+    role: "GHL Account Manager, ML Digital Marketing Agency (Next Level Wealth account)",
+  },
+  {
+    quote: "Placeholder testimonial — a short client quote about the work goes here.",
+    name: "Jineveve Sumingcan",
+    role: "Team Leader, ML Digital Marketing Agency (Prioritized SEO account)",
+  },
 ];
 
 const SECTION_TITLE =
   "font-display font-bold uppercase tracking-tight text-4xl sm:text-5xl lg:text-6xl leading-[0.95]";
+
+/** First + last initials from a display name, e.g. "Gerle Mae Alabado, MIT" -> "GA" */
+function initials(name: string) {
+  const clean = (name.split(",")[0] ?? name).trim();
+  const parts = clean.split(/\s+/).filter(Boolean);
+  return ((parts[0]?.[0] ?? "") + (parts[parts.length - 1]?.[0] ?? "")).toUpperCase();
+}
 
 function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -117,15 +171,47 @@ function Portfolio() {
 
   return (
     <div className="min-h-screen bg-paper text-ink font-body antialiased transition-colors duration-300">
+      {/* VERTICAL EDITORIAL SIDE LABELS */}
+      <div
+        aria-hidden="true"
+        className="hidden lg:flex flex-col gap-10 fixed left-3 top-1/2 -translate-y-1/2 z-40 pointer-events-none"
+      >
+        {["Web Development", "SEO & AI"].map((label) => (
+          <span
+            key={label}
+            className="text-[10px] font-medium uppercase tracking-[0.3em] text-soft [writing-mode:vertical-rl] rotate-180"
+          >
+            {label}
+          </span>
+        ))}
+      </div>
+      <div
+        aria-hidden="true"
+        className="hidden lg:flex flex-col gap-10 fixed right-3 top-1/2 -translate-y-1/2 z-40 pointer-events-none"
+      >
+        {["Branding", "Digital Experience"].map((label) => (
+          <span
+            key={label}
+            className="text-[10px] font-medium uppercase tracking-[0.3em] text-soft [writing-mode:vertical-rl]"
+          >
+            {label}
+          </span>
+        ))}
+      </div>
+
       {/* HEADER */}
       <header className="sticky top-0 z-50 bg-paper/85 backdrop-blur border-b border-line transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between gap-4">
-          <a href="#top" className="flex flex-col leading-none group" onClick={() => setMenuOpen(false)}>
+          <a
+            href="#top"
+            className="flex flex-col leading-none group"
+            onClick={() => setMenuOpen(false)}
+          >
             <span className="font-display font-bold uppercase text-xl tracking-tight transition-colors group-hover:text-terra">
               JUSTINE CONIENDO
             </span>
             <span className="text-[10px] uppercase tracking-[0.2em] text-soft mt-1">
-              Web Developer &amp; Graphic Designer
+              SEO &amp; AI Automation Specialist
             </span>
           </a>
 
@@ -137,6 +223,7 @@ function Portfolio() {
                 </a>
               ))}
             </nav>
+            <SocialLinks className="border-l border-line pl-4" />
             <a
               href="#contact"
               className="font-medium uppercase tracking-wide text-contrast-fg bg-terra rounded-full px-4 py-2 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-terra/30"
@@ -161,7 +248,9 @@ function Portfolio() {
                 <span
                   className={`block h-0.5 w-5 bg-ink transition-transform duration-200 ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
                 />
-                <span className={`block h-0.5 w-5 bg-ink transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+                <span
+                  className={`block h-0.5 w-5 bg-ink transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`}
+                />
                 <span
                   className={`block h-0.5 w-5 bg-ink transition-transform duration-200 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
                 />
@@ -191,6 +280,7 @@ function Portfolio() {
               >
                 Say hello
               </a>
+              <SocialLinks size="md" className="mt-4 justify-center" />
             </nav>
           </div>
         )}
@@ -234,6 +324,10 @@ function Portfolio() {
                   <span className="inline-flex items-center text-sm font-medium bg-surface rounded-full px-4 py-2">
                     BSIT, Cum Laude
                   </span>
+                  <span className="inline-flex items-center gap-2 text-sm font-medium bg-surface rounded-full px-4 py-2">
+                    <span className="size-1.5 rounded-full bg-terra" />
+                    Currently: SEO Specialist at ML Digital Marketing Agency
+                  </span>
                 </div>
               </Reveal>
 
@@ -267,9 +361,34 @@ function Portfolio() {
                     loading="eager"
                   />
                 </div>
-                <span className="absolute -bottom-2 -left-2 sm:left-0 bg-paper border border-line rounded-full px-4 py-2 text-[10px] font-medium uppercase tracking-[0.18em]">
-                  Open for new projects
-                </span>
+                {/* Rotating stamp badge, pinned to the bottom-right edge of the photo */}
+                <div className="absolute bottom-0 right-0 translate-x-[10%] translate-y-[10%] size-24 sm:size-28 rounded-full bg-paper ring-1 ring-line shadow-lg grid place-items-center">
+                  <svg
+                    viewBox="0 0 100 100"
+                    className="absolute inset-2.5 h-[calc(100%-1.25rem)] w-[calc(100%-1.25rem)] animate-[spin_14s_linear_infinite] text-terra"
+                    aria-hidden="true"
+                  >
+                    <defs>
+                      <path
+                        id="stampCircle"
+                        fill="none"
+                        d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0"
+                      />
+                    </defs>
+                    <text
+                      fontSize="7.4"
+                      fontWeight="600"
+                      letterSpacing="2.2"
+                      className="uppercase fill-current"
+                    >
+                      <textPath href="#stampCircle" startOffset="0%">
+                        Open for new projects • Open for new projects •
+                      </textPath>
+                    </text>
+                  </svg>
+                  <span className="size-2.5 rounded-full bg-terra" />
+                  <span className="sr-only">Open for new projects</span>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -350,11 +469,56 @@ function Portfolio() {
           </div>
         </section>
 
+        {/* EDUCATION & CERTIFICATIONS */}
+        <section id="education" className="py-16 sm:py-20 border-t border-line scroll-mt-20">
+          <Reveal>
+            <div className="flex items-baseline gap-4 mb-10">
+              <span className="font-display font-semibold text-terra text-lg">04</span>
+              <h2 className={SECTION_TITLE}>Education &amp; certifications</h2>
+            </div>
+          </Reveal>
+          <div className="grid md:grid-cols-2 gap-4">
+            <Reveal delay={0.04}>
+              <div className="bg-surface rounded-2xl p-6 h-full">
+                <h3 className="font-display font-semibold uppercase text-lg mb-4">Education</h3>
+                <div className="space-y-4">
+                  {EDUCATION.map((ed) => (
+                    <div key={ed.degree}>
+                      <p className="font-medium">{ed.degree}</p>
+                      <p className="text-soft text-sm mt-0.5">{ed.org}</p>
+                      <p className="text-soft text-sm">
+                        {ed.period}
+                        {ed.note ? ` · ${ed.note}` : ""}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <div className="bg-surface rounded-2xl p-6 h-full">
+                <h3 className="font-display font-semibold uppercase text-lg mb-4">
+                  Certifications
+                </h3>
+                <div className="space-y-4">
+                  {CERTIFICATIONS.map((c) => (
+                    <div key={c.name}>
+                      <p className="font-medium">{c.name}</p>
+                      <p className="text-soft text-sm mt-0.5">{c.org}</p>
+                      <p className="text-soft text-sm">{c.period}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* PREVIOUS WORKS */}
         <section id="works" className="py-16 sm:py-20 border-t border-line scroll-mt-20">
           <Reveal>
             <div className="flex items-baseline gap-4 mb-10">
-              <span className="font-display font-semibold text-terra text-lg">04</span>
+              <span className="font-display font-semibold text-terra text-lg">05</span>
               <h2 className={SECTION_TITLE}>Previous works</h2>
             </div>
           </Reveal>
@@ -383,18 +547,22 @@ function Portfolio() {
         <section id="testimonials" className="py-16 sm:py-20 border-t border-line scroll-mt-20">
           <Reveal>
             <div className="flex items-baseline gap-4 mb-10">
-              <span className="font-display font-semibold text-terra text-lg">05</span>
+              <span className="font-display font-semibold text-terra text-lg">06</span>
               <h2 className={SECTION_TITLE}>Kind words</h2>
             </div>
           </Reveal>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 sm:mx-0 sm:px-0 [scrollbar-width:thin]">
             {TESTIMONIALS.map((t, i) => (
-              <Reveal key={i} delay={i * 0.05}>
+              <Reveal
+                key={t.name}
+                delay={i * 0.05}
+                className="shrink-0 w-[85%] sm:w-[360px] snap-start"
+              >
                 <div className="bg-surface rounded-2xl p-6 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-ink/10">
                   <p className="leading-relaxed text-pretty flex-1">&ldquo;{t.quote}&rdquo;</p>
                   <div className="mt-5 flex items-center gap-3">
                     <span className="bg-terra-soft text-terra size-9 rounded-full grid place-items-center text-[11px] font-semibold">
-                      JC
+                      {initials(t.name)}
                     </span>
                     <span className="text-sm">
                       <span className="font-medium block">{t.name}</span>
@@ -456,7 +624,10 @@ function Portfolio() {
               </div>
             </Reveal>
           </div>
-          <div className="mt-16 pt-6 border-t border-contrast-fg/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm opacity-70">
+          <div className="mt-12">
+            <SocialLinks variant="contrast" size="md" />
+          </div>
+          <div className="mt-10 pt-6 border-t border-contrast-fg/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm opacity-70">
             <span>&copy; {new Date().getFullYear()} Justine Laurence G. Coniendo</span>
             <span className="flex items-center gap-2">
               <span className="size-2 rounded-full bg-terra" />
