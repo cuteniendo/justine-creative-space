@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Reveal } from "@/components/reveal";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SocialLinks } from "@/components/social-links";
+import { FaqChatbot } from "@/components/faq-chatbot";
 import portrait from "@/assets/portrait.jpg.asset.json";
 import brandAgsGarden from "@/assets/works/brand-ags-garden.jpg";
 import brandIteaLogo from "@/assets/works/brand-itea-logo.jpg";
@@ -687,6 +688,8 @@ function Portfolio() {
           </div>
         </div>
       </footer>
+
+      <FaqChatbot />
     </div>
   );
 }
