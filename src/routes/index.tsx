@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Reveal } from "@/components/reveal";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SocialLinks } from "@/components/social-links";
-import portrait from "@/assets/portrait.jpg.asset.json";
+import portrait from "@/assets/portrait.jpg";
 import brandAgsGarden from "@/assets/works/brand-ags-garden.jpg";
 import brandIteaLogo from "@/assets/works/brand-itea-logo.jpg";
 import webDashboard from "@/assets/works/web-dashboard.png";
@@ -404,7 +404,7 @@ function Portfolio() {
                 <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-full bg-terra" />
                 <div className="absolute inset-0 overflow-hidden rounded-full ring-1 ring-line">
                   <img
-                    src={portrait.url}
+                    src={portrait}
                     alt="Portrait of Justine Laurence G. Coniendo"
                     className="h-full w-full object-cover object-top"
                     loading="eager"
