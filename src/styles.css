@@ -211,3 +211,29 @@ summary {
     transform-origin: left;
   }
 }
+
+/* Rotating stamp badge on the hero portrait */
+@keyframes stamp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility stamp-spin {
+  animation: stamp-spin 20s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp-spin {
+    animation: none;
+  }
+}
+
+/* Horizontal slider: hide scrollbar chrome */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

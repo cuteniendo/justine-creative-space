@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import { Reveal } from "@/components/reveal";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SocialLinks } from "@/components/social-links";
-import { FaqChatbot } from "@/components/faq-chatbot";
-import portrait from "@/assets/portrait.jpg.asset.json";
+import portrait from "@/assets/portrait.jpg";
 import brandAgsGarden from "@/assets/works/brand-ags-garden.jpg";
 import brandIteaLogo from "@/assets/works/brand-itea-logo.jpg";
 import webDashboard from "@/assets/works/web-dashboard.png";
@@ -350,6 +349,13 @@ function Portfolio() {
                 </h1>
               </Reveal>
 
+              <Reveal delay={0.09}>
+                <p className="mt-4 font-display font-semibold uppercase tracking-[0.06em] text-terra text-lg sm:text-xl leading-snug text-pretty">
+                  SEO &amp; AI Automation Specialist — with a web development &amp; design
+                  background
+                </p>
+              </Reveal>
+
               <Reveal delay={0.12}>
                 <p className="mt-6 max-w-[46ch] text-lg leading-relaxed text-soft text-pretty">
                   Cum Laude B.S. IT graduate from Carlos Hilado Memorial State University, blending
@@ -398,7 +404,7 @@ function Portfolio() {
                 <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-full bg-terra" />
                 <div className="absolute inset-0 overflow-hidden rounded-full ring-1 ring-line">
                   <img
-                    src={portrait.url}
+                    src={portrait}
                     alt="Portrait of Justine Laurence G. Coniendo"
                     className="h-full w-full object-cover object-top"
                     loading="eager"
@@ -688,8 +694,6 @@ function Portfolio() {
           </div>
         </div>
       </footer>
-
-      <FaqChatbot />
     </div>
   );
 }
