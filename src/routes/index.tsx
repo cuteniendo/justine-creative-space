@@ -349,6 +349,13 @@ function Portfolio() {
                 </h1>
               </Reveal>
 
+              <Reveal delay={0.09}>
+                <p className="mt-4 font-display font-semibold uppercase tracking-[0.06em] text-terra text-lg sm:text-xl leading-snug text-pretty">
+                  SEO &amp; AI Automation Specialist — with a web development &amp; design
+                  background
+                </p>
+              </Reveal>
+
               <Reveal delay={0.12}>
                 <p className="mt-6 max-w-[46ch] text-lg leading-relaxed text-soft text-pretty">
                   Cum Laude B.S. IT graduate from Carlos Hilado Memorial State University, blending
