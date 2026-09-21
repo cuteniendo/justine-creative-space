@@ -1,15 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { Expand, Play } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SocialLinks } from "@/components/social-links";
+import { FaqChatbot } from "@/components/faq-chatbot";
+import { WorksLightbox, type Work, type WorkImage } from "@/components/works-lightbox";
 import portrait from "@/assets/portrait.jpg";
 import brandAgsGarden from "@/assets/works/brand-ags-garden.jpg";
 import brandIteaLogo from "@/assets/works/brand-itea-logo.jpg";
+import brandChmsuSavers from "@/assets/works/brand-chmsu-savers.jpg";
 import webDashboard from "@/assets/works/web-dashboard.png";
 import webInfographic from "@/assets/works/web-infographic.png";
 import editorialPressFreedom from "@/assets/works/editorial-press-freedom.jpg";
+import editorialAquarianBoard from "@/assets/works/editorial-aquarian-board.jpg";
+import editorialTheobromatech from "@/assets/works/editorial-theobromatech.jpg";
+import editorialAshWednesday from "@/assets/works/editorial-ash-wednesday.jpg";
+import editorialAquarianNewsletter from "@/assets/works/editorial-aquarian-newsletter.jpg";
+import editorialHolyFamilyTribute from "@/assets/works/editorial-holy-family-tribute.jpg";
 import socialFisheriesCover from "@/assets/works/social-fisheries-cover.jpg";
+import socialTechnoFest1 from "@/assets/works/social-techno-fest-1.jpg";
+import socialTechnoFest2 from "@/assets/works/social-techno-fest-2.jpg";
+import socialFilingCandidacy from "@/assets/works/social-filing-candidacy.jpg";
+import socialAlumniHomecoming from "@/assets/works/social-alumni-homecoming.jpg";
+import clientAgsFeaturedPlants from "@/assets/works/client-ags-featured-plants.jpg";
+import clientAgsAboutOwner from "@/assets/works/client-ags-about-owner.jpg";
+import clientRobertAnaliza from "@/assets/works/client-robert-analiza.jpg";
+import clientJasonLunalie from "@/assets/works/client-jason-lunalie.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -112,41 +129,154 @@ const CERTIFICATIONS = [
     org: "Esteemed Alliance of Information Technology Students, CHMSU",
     period: "April 2026",
   },
+  {
+    name: "DigiWork eXP 2025",
+    org: "City of Talisay, Negros Occidental",
+    period: "September 2025",
+  },
+  {
+    name: "DevFest Bacolod — Flutter + AI Codelab",
+    org: "Google Developer Groups Bacolod",
+    period: "December 2024",
+  },
+  { name: "DevFest Bacolod 2025", org: "Google Developer Groups Bacolod", period: "November 2025" },
 ];
 
-const WORKS: {
-  title: string;
-  note: string;
-  images: { src: string; alt: string; pos?: "top" | "center" }[];
-}[] = [
+const WORKS: Work[] = [
   {
     title: "Brand identity",
-    note: "AG's Garden social ad & iTEA org logo — brand and print design.",
-    images: [
-      { src: brandAgsGarden, alt: "AG's Garden social media promotional graphic" },
-      { src: brandIteaLogo, alt: "iTEA (Esteemed Alliance of IT Students) organization logo" },
+    note: "AG's Garden, iTEA & CHMSU Savers — brand marks and identity design.",
+    media: [
+      { type: "image", src: brandAgsGarden, alt: "AG's Garden social media promotional graphic" },
+      {
+        type: "image",
+        src: brandIteaLogo,
+        alt: "iTEA (Esteemed Alliance of IT Students) organization logo",
+      },
+      { type: "image", src: brandChmsuSavers, alt: "CHMSU Savers organization wordmark and badge" },
     ],
   },
   {
     title: "Web build",
     note: "SONARCO loan & e-commerce platform — dashboard build and research poster.",
-    images: [
-      { src: webDashboard, alt: "SONARCO e-commerce platform product dashboard screenshot" },
-      { src: webInfographic, alt: "SONARCO capstone research poster" },
+    media: [
+      {
+        type: "image",
+        src: webDashboard,
+        alt: "SONARCO e-commerce platform product dashboard screenshot",
+      },
+      { type: "image", src: webInfographic, alt: "SONARCO capstone research poster" },
     ],
   },
   {
     title: "Editorial layout",
-    note: "World Press Freedom Day — The Aquarian editorial graphic.",
-    images: [
-      { src: editorialPressFreedom, alt: "World Press Freedom Day editorial poster", pos: "top" },
+    note: "Publication layouts for The Aquarian, research posters, and parish materials.",
+    media: [
+      {
+        type: "image",
+        src: editorialPressFreedom,
+        alt: "World Press Freedom Day editorial poster",
+        pos: "top",
+      },
+      {
+        type: "image",
+        src: editorialAquarianBoard,
+        alt: "The Aquarian Editorial Board & Staff poster",
+      },
+      {
+        type: "image",
+        src: editorialTheobromatech,
+        alt: "TheobromaTech capstone research poster",
+        pos: "top",
+      },
+      {
+        type: "image",
+        src: editorialAshWednesday,
+        alt: "Ash Wednesday editorial graphic for The Aquarian",
+        pos: "top",
+      },
+      { type: "image", src: editorialAquarianNewsletter, alt: "CHMSU Alumni Newsletter layout" },
+      {
+        type: "image",
+        src: editorialHolyFamilyTribute,
+        alt: "Holy Family Chaplaincy tribute poster",
+        pos: "top",
+      },
     ],
   },
   {
     title: "Social campaign",
-    note: "Fisheries Extension book cover design.",
-    images: [
-      { src: socialFisheriesCover, alt: "Fisheries Extension book cover design", pos: "top" },
+    note: "Event and org social graphics for iTEA and CHMSU alumni.",
+    media: [
+      {
+        type: "image",
+        src: socialFisheriesCover,
+        alt: "Fisheries Extension book cover design",
+        pos: "top",
+      },
+      { type: "image", src: socialTechnoFest1, alt: "iTEA Techno Fest 2026 poster, concept 1" },
+      { type: "image", src: socialTechnoFest2, alt: "iTEA Techno Fest 2026 poster, concept 2" },
+      { type: "image", src: socialFilingCandidacy, alt: "iTEA Filing of Candidacy social graphic" },
+      { type: "image", src: socialAlumniHomecoming, alt: "CHMSU Alumni Homecoming 2025 graphic" },
+    ],
+  },
+  {
+    title: "Client work",
+    note: "Freelance design for personal and small-business clients.",
+    media: [
+      {
+        type: "image",
+        src: clientAgsFeaturedPlants,
+        alt: "AG's Garden Featured Plants social graphic",
+      },
+      {
+        type: "image",
+        src: clientAgsAboutOwner,
+        alt: "AG's Garden About the Owner social graphic",
+      },
+      { type: "image", src: clientRobertAnaliza, alt: "Robert & Analiza wedding thank-you card" },
+      { type: "image", src: clientJasonLunalie, alt: "Jason & Lunalie wedding thank-you card" },
+    ],
+  },
+  {
+    title: "Video edits",
+    note: "A few video edits and features — reels I edited or appeared in.",
+    media: [
+      {
+        type: "video",
+        url: "https://www.facebook.com/reel/2013656022758905",
+        caption: "Video edit sample",
+      },
+      {
+        type: "video",
+        url: "https://www.facebook.com/reel/1291431529429032",
+        caption: "Video edit sample",
+      },
+      {
+        type: "video",
+        url: "https://www.facebook.com/reel/1188530859419240",
+        caption: "Video edit sample",
+      },
+      {
+        type: "video",
+        url: "https://www.facebook.com/share/v/19ttLa8nyr/",
+        caption: "Video edit sample",
+      },
+      {
+        type: "video",
+        url: "https://www.facebook.com/share/v/1Ese2bbfP3/",
+        caption: "Video edit sample",
+      },
+      {
+        type: "video",
+        url: "https://www.facebook.com/reel/1461745442207751",
+        caption: "Video edit sample",
+      },
+      {
+        type: "video",
+        url: "https://www.facebook.com/reel/2042777006251041",
+        caption: "Video edit sample",
+      },
     ],
   },
 ];
@@ -202,6 +332,7 @@ function initials(name: string) {
 
 function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openWork, setOpenWork] = useState<number | null>(null);
 
   // Lock body scroll when the mobile menu is open.
   useEffect(() => {
@@ -574,32 +705,69 @@ function Portfolio() {
               <h2 className={SECTION_TITLE}>Previous works</h2>
             </div>
           </Reveal>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {WORKS.map((w, i) => (
-              <Reveal key={w.title} delay={i * 0.05}>
-                <div className="group bg-surface rounded-2xl p-4 h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-ink/10">
-                  <div className="w-full aspect-[3/2] rounded-xl overflow-hidden outline-1 -outline-offset-1 outline-line flex gap-0.5 bg-terra-soft">
-                    {w.images.map((img) => (
-                      <img
-                        key={img.src}
-                        src={img.src}
-                        alt={img.alt}
-                        loading="lazy"
-                        className={`h-full flex-1 object-cover ${img.pos === "top" ? "object-top" : "object-center"}`}
-                      />
-                    ))}
-                  </div>
-                  <div className="px-2 pt-4 pb-2">
-                    <span className="font-display font-semibold uppercase transition-colors group-hover:text-terra">
-                      {w.title}
-                    </span>
-                    <span className="block text-sm text-soft mt-0.5">{w.note}</span>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {WORKS.map((w, i) => {
+              const previewImages = w.media
+                .filter((m): m is WorkImage => m.type === "image")
+                .slice(0, 2);
+              const extraCount = w.media.length - previewImages.length;
+              return (
+                <Reveal key={w.title} delay={i * 0.04}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenWork(i)}
+                    className="group bg-surface rounded-2xl p-4 h-full w-full text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-ink/10"
+                  >
+                    <div className="relative w-full aspect-[3/2] rounded-xl overflow-hidden outline-1 -outline-offset-1 outline-line flex gap-0.5 bg-terra-soft">
+                      {previewImages.length > 0 ? (
+                        previewImages.map((img) => (
+                          <img
+                            key={img.src}
+                            src={img.src}
+                            alt={img.alt}
+                            loading="lazy"
+                            className={`h-full flex-1 object-cover ${img.pos === "top" ? "object-top" : "object-center"}`}
+                          />
+                        ))
+                      ) : (
+                        <div className="h-full w-full grid place-items-center bg-ink text-paper">
+                          <div className="flex flex-col items-center gap-2">
+                            <Play size={26} />
+                            <span className="text-[10px] uppercase tracking-[0.15em]">
+                              {w.media.length} videos
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                      {extraCount > 0 && previewImages.length > 0 && (
+                        <span className="absolute bottom-2 left-2 bg-ink/70 text-paper text-[10px] font-medium px-2 py-1 rounded-full">
+                          +{extraCount} more
+                        </span>
+                      )}
+                      <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/40 transition-colors duration-300 grid place-items-center">
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-paper text-xs font-medium uppercase tracking-[0.15em] bg-ink/60 rounded-full px-4 py-2 flex items-center gap-2">
+                          <Expand size={13} />
+                          View gallery
+                        </span>
+                      </div>
+                    </div>
+                    <div className="px-2 pt-4 pb-2">
+                      <span className="font-display font-semibold uppercase transition-colors group-hover:text-terra">
+                        {w.title}
+                      </span>
+                      <span className="block text-sm text-soft mt-0.5">{w.note}</span>
+                    </div>
+                  </button>
+                </Reveal>
+              );
+            })}
           </div>
         </section>
+
+        <WorksLightbox
+          work={openWork !== null ? (WORKS[openWork] ?? null) : null}
+          onClose={() => setOpenWork(null)}
+        />
 
         {/* TESTIMONIALS */}
         <section id="testimonials" className="py-16 sm:py-20 border-t border-line scroll-mt-20">
@@ -694,6 +862,8 @@ function Portfolio() {
           </div>
         </div>
       </footer>
+
+      <FaqChatbot />
     </div>
   );
 }
